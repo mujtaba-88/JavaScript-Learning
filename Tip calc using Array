@@ -1,0 +1,8 @@
+// Tip calculator using Arrays(Array Challenge)
+const calcBill = function(bill){
+return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+
+const bills = [125, 555, 44];
+const tips = [calcBill(bills[0]), calcBill(bills[1]), calcBill(bills[2])];
+console.log(bills, tips);
