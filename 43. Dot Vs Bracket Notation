@@ -1,0 +1,20 @@
+// Object: Properties have name and Properties index are not so much important
+// Beacuse properties can be accessed via property name.
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Abc',
+  age: 2021-1996,
+  job: 'Shopify Developer',
+  languages: ['HTML','Liquid', 'CSS']
+}
+console.log(jonas);
+
+console.log(jonas.lastName);
+console.log(jonas['lastName']);
+
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, languages');
+console.log(jonas[interestedIn]);
