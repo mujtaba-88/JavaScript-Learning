@@ -1,0 +1,90 @@
+// Spread operator is little bit similar to destructuring because it help us get elements out of arrays
+// Now the big difference is spread operator take all the element from the array and it doesn't add new variable in it
+// Iterables: arrays, strings, maps, sets,. NOT objects
+// In ES 2018 Spread operator can work with Objects.
+'use strict';
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12, 
+      close: 22,
+    },
+    fri: {
+      open: 12, 
+      close: 22,
+    },
+    sat: {
+      open: 12, 
+      close: 22,
+    },
+  },
+order: function(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`)
+  }
+};
+
+
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+// Using Spread Operator(Like taking all the element individually)
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+// Useful example for restaurant.mainMenu(Writing a new array)
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+
+const str = 'Jonas';
+const letters = [...str, '', '.S'];
+console.log(letters);
+console.log(...str);
+// Don't use in template literals 
+//console.log(`${...str}` Schemedtamann);  
+
+
+// Function having multiple arguments and then spread operator pass these arguments
+// const ingredients = [prompt('Let\'s make pasta! Ingredient1 '),
+//                     prompt('ingredient2'),
+//                     prompt('ingredient3'),
+//                     ];
+// console.log(ingredients);
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+
+
+// Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Miachel'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
