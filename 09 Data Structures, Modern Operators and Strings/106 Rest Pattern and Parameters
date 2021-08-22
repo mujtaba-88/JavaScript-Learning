@@ -1,0 +1,84 @@
+// https://replit.com/@MujtabaAbid/106-Rest-Pattern-and-Parameter#index.js
+
+'use strict';
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12, 
+      close: 22,
+    },
+    fri: {
+      open: 12, 
+      close: 22,
+    },
+    sat: {
+      open: 12, 
+      close: 22,
+    },
+  },
+order: function(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`)
+  },
+
+  // Rest parameter so that function have at least one parameter and other are optional.
+  orderPizza: function(mainIngredient, ...otherIngredient){
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+// 1) Destructuring
+
+
+// Spread, because on RIGHT side of =
+const arr = [1,2, ...[3,4]];
+
+// Rest, because on LEFT side of =
+const [a,b, ...others] = [1, 2, 3, 4, 5];
+console.log(a,b, others);
+
+const [pizza, ,risotto, ...otherFood ] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(risotto, pizza, otherFood);
+
+// Objects
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+
+
+// 2) Functions
+// Pass multiple argument all at the sametime in function.
+const add = function(...numbers){
+  let sum = 0;
+  for(let i = 0; i < numbers.length; i++)
+  sum += numbers[i];
+  console.log(sum);
+  }
+
+// Taking mutiple number or values and pack them into one array. 
+add(2,3);
+add(5,3,7,2);
+add(8,2,5,74,73,25,7); 
+
+// Adding Arrays
+const x = [5, 4, 7];
+add(...x);
+
+// One main parameter and others are log into an array.
+restaurant.orderPizza('mushrooms', 'onion0', 'olives');
