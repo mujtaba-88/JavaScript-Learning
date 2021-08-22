@@ -1,0 +1,81 @@
+// https://replit.com/@MujtabaAbid/Short-Circutingand-and#index.js
+
+'use strict';
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12, 
+      close: 22,
+    },
+    fri: {
+      open: 12, 
+      close: 22,
+    },
+    sat: {
+      open: 12, 
+      close: 22,
+    },
+  },
+order: function(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`)
+  },
+
+  // Rest parameter so that function have at least one parameter and other are optional.
+  orderPizza: function(mainIngredient, ...otherIngredient){
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
+};
+
+
+// Three properties of Logical Operators
+// 1.	Use any data type
+// 2.	Return any data type
+// 3.	Short Circuiting
+
+console.log('--- OR ---');
+// Return first turthy value or last value if all values are falsy.
+// In case of OR operator if the first operand is truthy value then other operand cannot be evulated.
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('--- AND ---');
+// Immidealtely return the falsy value without evaluating the next value(AND = Return true when all values are true).
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'Jonas');
+
+// Pracitcal Example
+if (restaurant.orderPizza){
+  restaurant.orderPizza('pizza', 'mushroom');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('pizza', 'mushroom');
