@@ -1,0 +1,32 @@
+const flight = 'LH234';
+const mujtaba = {
+  name: 'Mujtaba Abid',
+  passport: 123456,
+};
+
+const checkIn = function(flightNum, passenger){
+   flightNum = 'LH999',
+   passenger.name = 'Mr ' + passenger.name;
+
+   if(passenger.passport === 123456){
+     alert('Checked in');
+   } else {
+     alert('Wrong Passport');
+   }
+}
+
+checkIn(flight, mujtaba);
+console.log(flight);
+console.log(mujtaba);
+
+// Is the same as doing ...
+const flightNum = flight;
+const passenger = mujtaba;
+
+
+const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 100000000000);
+};
+
+newPassport(mujtaba);
+checkIn(flight, mujtaba);
