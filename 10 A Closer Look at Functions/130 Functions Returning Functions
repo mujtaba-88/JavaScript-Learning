@@ -1,0 +1,17 @@
+const greet = function(greeting){
+  return function(name){
+    console.log(`${greeting} ${name}`);
+  }
+}
+
+const greetHey = greet('Hey');
+greetHey('Jonas');
+greetHey('Steven');
+
+greet('Hello')('Jonas');
+
+greetArrow = greeting =>  name => console.log(`${greeting} ${name}`);
+
+greetArrow('Hello')('Mujtaba');
+
+//The trick is the first parameter belongs to first function and secod parameter belongs to returning function.
