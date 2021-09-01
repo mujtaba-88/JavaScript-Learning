@@ -1,0 +1,19 @@
+// We don't create closures manually like we create a new array. Closures automatically happens under a certain condition. 
+// A closure makes a function remember all the variables that existed at the function's birthplace,
+
+
+const secureBooking = function() {
+  let passengerCount = 0;
+
+  return function(){
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+    }
+  }
+
+  const booker = secureBooking();
+  booker();
+  booker();
+  booker();
+
+  console.dir(booker);
