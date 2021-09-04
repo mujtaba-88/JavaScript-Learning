@@ -30,3 +30,4 @@ console.log([...arr, ...arr2]);
 
 // JOIN: Join with some seperator
 console.log(letters.join(' - '));
+
