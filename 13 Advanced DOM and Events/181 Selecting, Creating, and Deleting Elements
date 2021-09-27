@@ -1,0 +1,49 @@
+// Select all document. For example to apply HTML style on entire page. We need to use this documentElement;
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+document.getElementById('section--1');
+// Select all buttons on the home page.
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+// Creating and inserting elements
+// .insertAdjacentHTML // Quick and easy way of reating an HTML element
+
+const message = document.createElement('div'); //Here we need to pass the string basically a tag name.
+message.classList.add('cookie-message')
+// message.textContent = 'We use cookied for improved functionality and analytics.';
+message.innerHTML = 'We use cookied for improved functionality                                                                                           
+and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+
+// Prepending add the first child of this element
+header.prepend(message);
+// You can use append method to move it to the last element
+header.append(message);
+// header.append(message.cloneNode(true));
+
+header.before(message);
+header.after(message);
+
+// Delete elements
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    // message.remove();
+    message.parentElement.removeChild(message);
+  });
+
+
+
+
+
+
+
+// If you delete a variable items like allSections than it does not deleted on DOM. 
