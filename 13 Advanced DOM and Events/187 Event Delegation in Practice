@@ -1,3 +1,4 @@
+
 // Event Delegation in Practice (Page navigtion using smooth scrolling)
 // Without Event Delegtion
 // document.querySelectorAll('.nav__link').forEach(function(el) {
@@ -10,14 +11,15 @@
 // });
 
 // In event delegation we put the event listener on common parent that we are insterested in.
-// Contain two step 1. Add event listener on common element 2. Determine what element originated the event.
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
 
-document.querySelectorAll('.nav__link').addEventListener('click', function(e){
-  console.log(e.target);
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   e.preventDefault();
 
-  // Matching Strategy
-  if(e.target.classList.contains('nav__link')){
-    const id = this.getAttribute("href"); 
-    document.querySelector(id).scrollIntoView({behavior: 'smooth'});
-  }
-});
+//   // Matching strategy
+//   if (e.target.classList.contains('nav__link')) {
+//     const id = e.target.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
