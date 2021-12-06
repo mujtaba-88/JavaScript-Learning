@@ -1,0 +1,39 @@
+//////////////////////////
+////// 248. Handling Rejected Error
+
+// The best way to handle errors is by using catch method at the end of promise regardless of where the error is occurs. 
+
+const renderError = function(msg) {
+	countriesContainer.insertAdjacentHTML('beforeend', msg);
+	// countriesContainer.style.opacity = 1;
+
+}
+
+const getCountryData = function(country) {
+    // Country1
+    fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then( response => response.json())
+    .then( data => {
+        renderCountry(data[0]);
+    const neighbour = data[0].borders[0]
+
+    if (!neighbour) return;
+    // Country2
+    return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    })  
+    .then( response => response.json())
+    .then( data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+    	console.error(`${err}`);
+    	renderError(`Something bad happened ${err}`);
+    });
+    // No matter the callback is fullfilled or rejected. Finally method will always executed.
+    // For example you can use it for hiding loading spanner.
+    .finally(() => {
+    	countriesContainer.style.opacity = 1;
+    });
+    
+  };
+  
+
+  console.log(getCountryData('pakistan'));
