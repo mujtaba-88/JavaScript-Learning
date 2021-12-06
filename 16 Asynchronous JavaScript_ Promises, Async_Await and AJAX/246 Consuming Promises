@@ -47,11 +47,13 @@ const renderCountry = function (data, className = '') {
 const request = fetch('https://restcountries.com/v3/name/pakistan');
 console.log(request);
 
-const getCountryData = function(country){
-  fetch(`https://restcountries.com/v3/name/ 
-  ${country}`)
- .then(response => response.json())
-  .then(data => console.log(data[0]))
+// Clearning the console and organizing the code
+
+const getCountryData = function(country) {
+  const url = `https://restcountries.com/v3.1/name/${country}`;
+  fetch(url)
+  .then( response => response.json())
+  .then( data =>  renderCountry(data[0]));
 };
 
-getCountryData('portugal')
+console.log(getCountryData('pakistan'));
